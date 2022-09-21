@@ -36,10 +36,9 @@
 
 (use-package flycheck
   :ensure t
-  ;; :init (global-flycheck-mode)
-  ;; :config
-  ;; (add-hook 'after-init-hook #'global-flycheck-mode)
-  )
+  :init (global-flycheck-mode)
+  :config
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package yasnippet
   :ensure t
@@ -127,22 +126,33 @@
 (setq initial-scratch-message nil)
 (blink-cursor-mode 0) ; disalbe cursor blink
 
-;; line numbers
+;; LINE NUMBERS
 (global-display-line-numbers-mode 1)
 (setq column-number-mode t)
 
-;; line / word wrap
+;; LINE / WORD WRAP
 (global-visual-line-mode t)
 
-;; y or n instead of yes-or no
+;; Y OR N INSTEAD OF YES-OR NO
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; no annoying bell!
+;; NO ANNOYING BELL!
 (setq ring-bell-function 'ignore)
 
 ;; FONTS
 (add-to-list 'default-frame-alist
              '(font . "Hack-12"))
+
+;; Eshell Prompt
+(setq eshell-prompt-regexp "^[^#$\n]*[#$] "
+      eshell-prompt-function
+      (lambda nil
+        (concat
+     "[" (system-name) " "
+     (if (string= (eshell/pwd) (getenv "HOME"))
+         "~" (eshell/basename (eshell/pwd)))
+     "]"
+     (if (= (user-uid) 0) "# " "$ "))))
 
 ;; show trailing whitespece
 ;(setq-default show-trailing-whitespace t)
@@ -178,6 +188,12 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 (c-set-offset 'comment-intro 0)
+
+;; FILL COLUMN
+(setq-default fill-column 80)
+
+;; AUTO CLEAN TRAILING WHITESPACE
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;; Indentation for python
 
@@ -215,9 +231,9 @@
 ;; COMPILE COMMAND
 (add-hook 'c++-mode-hook
           (lambda ()
-	        (unless (file-exists-p "Makefile")
-	          (set (make-local-variable 'compile-command)
-		           (let ((file (file-name-nondirectory buffer-file-name)))
+            (unless (file-exists-p "Makefile")
+              (set (make-local-variable 'compile-command)
+                   (let ((file (file-name-nondirectory buffer-file-name)))
                      (format "g++ %s -o %s -lGL -lGLU -lglut"
                              file
                              (file-name-sans-extension file)))))))
@@ -264,6 +280,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("a138ec18a6b926ea9d66e61aac28f5ce99739cf38566876dc31e29ec8757f6e2" "aec7b55f2a13307a55517fdf08438863d694550565dee23181d2ebd973ebd6b8" "636b135e4b7c86ac41375da39ade929e2bd6439de8901f53f88fde7dd5ac3561" default))
  '(org-agenda-files
    '("~/Documents/repositories/ence360/ence360.org" "/home/mz/Documents/repositories/cosc368/cosc368.org" "/home/mz/Documents/repositories/cosc367/cosc367.org" "/home/mz/Documents/repositories/cosc362/cosc362.org"))
  '(package-selected-packages
