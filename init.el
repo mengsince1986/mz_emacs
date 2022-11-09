@@ -143,6 +143,9 @@
 (add-to-list 'default-frame-alist
              '(font . "Hack-12"))
 
+(set-face-attribute 'mode-line nil :font "Hack-11")
+(set-face-attribute 'minibuffer-prompt nil :font "Hack-9")
+
 ;; Eshell Prompt
 (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
       eshell-prompt-function
@@ -280,10 +283,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("a138ec18a6b926ea9d66e61aac28f5ce99739cf38566876dc31e29ec8757f6e2" "aec7b55f2a13307a55517fdf08438863d694550565dee23181d2ebd973ebd6b8" "636b135e4b7c86ac41375da39ade929e2bd6439de8901f53f88fde7dd5ac3561" default))
- '(org-agenda-files
-   '("~/Documents/repositories/ence360/ence360.org" "/home/mz/Documents/repositories/cosc368/cosc368.org" "/home/mz/Documents/repositories/cosc367/cosc367.org" "/home/mz/Documents/repositories/cosc362/cosc362.org"))
  '(package-selected-packages
    '(htmlize winum tree-sitter-langs tree-sitter counsel-etags counsel flx projectile yasnippet-snippets yasnippet flycheck markdown-mode doom-themes use-package)))
 (custom-set-faces
