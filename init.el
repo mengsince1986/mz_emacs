@@ -144,7 +144,6 @@
              '(font . "Hack-12"))
 
 (set-face-attribute 'mode-line nil :font "Hack-11")
-(set-face-attribute 'minibuffer-prompt nil :font "Hack-9")
 
 ;; Eshell Prompt
 (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
