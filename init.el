@@ -141,9 +141,9 @@
 
 ;; FONTS
 (add-to-list 'default-frame-alist
-             '(font . "Hack-12"))
+             '(font . "Hack-11"))
 
-(set-face-attribute 'mode-line nil :font "Hack-11")
+(set-face-attribute 'mode-line nil :font "Hack-10.5")
 
 ;; Eshell Prompt
 (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
@@ -282,6 +282,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   '("~/Documents/repos/career/2022_graduating/2022_job.org" "~/Documents/repos/career/Learning/learning.org"))
  '(package-selected-packages
    '(htmlize winum tree-sitter-langs tree-sitter counsel-etags counsel flx projectile yasnippet-snippets yasnippet flycheck markdown-mode doom-themes use-package)))
 (custom-set-faces
