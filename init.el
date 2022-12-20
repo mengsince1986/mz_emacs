@@ -110,6 +110,28 @@
 (use-package htmlize
   :ensure t)
 
+(use-package emmet-mode
+  :ensure t
+  :config
+  (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+  (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation
+  )
+
+(use-package web-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+  (defun my-web-mode-hook ()
+    "Hooks for Web mode."
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)
+    )
+  (add-hook 'web-mode-hook  'my-web-mode-hook))
+
 ;; BUILT-IN SETTINGS
 
 ;; UI
@@ -282,8 +304,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("51c71bb27bdab69b505d9bf71c99864051b37ac3de531d91fdad1598ad247138" default))
  '(org-agenda-files
-   '("~/Documents/repos/career/2022_graduating/2022_job.org" "~/Documents/repos/career/Learning/learning.org"))
+   '("~/Documents/repos/career/2022/Interviews/Enphase/enphase_interview.org" "~/Documents/repos/career/Learning/learning.org"))
  '(package-selected-packages
    '(htmlize winum tree-sitter-langs tree-sitter counsel-etags counsel flx projectile yasnippet-snippets yasnippet flycheck markdown-mode doom-themes use-package)))
 (custom-set-faces
